@@ -87,15 +87,14 @@ class managecalendarevents extends \core\task\scheduled_task {
                     $course = $DB->get_record('course', array('idnumber' => $courseidnumber));
                     $description = '<div class="no-overflow"><p>'.$roomcode.'</p></div>';
                     $timeduration = $timeend - $timestart;
-                    $localcoursetime = 'local_coursetime';
 
                     if ($DB->record_exists('event', array('description' => $description, 'courseid' => $course->id,
-                        'eventtype' => $localcoursetime, 'timestart' => $timestart,
+                        'eventtype' => $DB->sql_compare_text('local_coursetime'), 'timestart' => $timestart,
                         'timeduration' => $timeduration))) {
 
                         $record = $DB->get_record('event', array('description' => $description,
                             'courseid' => $course->id,
-                            'eventtype' => $localcoursetime, 'timestart' => $timestart,
+                            'eventtype' => $DB->sql_compare_text('local_coursetime'), 'timestart' => $timestart,
                             'timeduration' => $timeduration));
 
                         $record->timemodified = $now;
