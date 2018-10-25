@@ -55,7 +55,7 @@ class managecalendarevents extends \core\task\scheduled_task {
         $xmldoc = new \DOMDocument();
         $xmldoc->load('/home/referentiel/sefiap_edt_enseignants_droit.xml');
 
-        $xpathvar = new Domxpath($xmldoc);
+        $xpathvar = new \Domxpath($xmldoc);
 
         $querytext = '//Etape/ELP/Enseignant/EDT';
         $query = $xpathvar->query($querytext);
