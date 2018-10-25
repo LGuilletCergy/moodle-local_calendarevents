@@ -88,11 +88,12 @@ class managecalendarevents extends \core\task\scheduled_task {
                     $description = '<div class="no-overflow"><p>'.$roomcode.'</p></div>';
                     $timeduration = $timeend - $timestart;
 
-                    if ($DB->record_exists('event', array('description' => $description, 'courseid' => $course->id,
+                    if ($DB->record_exists('event', array('description' => $DB->sql_compare_text($description),
+                        'courseid' => $course->id,
                         'eventtype' => $DB->sql_compare_text('local_coursetime'), 'timestart' => $timestart,
                         'timeduration' => $timeduration))) {
 
-                        $record = $DB->get_record('event', array('description' => $description,
+                        $record = $DB->get_record('event', array('description' => $DB->sql_compare_text($description),
                             'courseid' => $course->id,
                             'eventtype' => $DB->sql_compare_text('local_coursetime'), 'timestart' => $timestart,
                             'timeduration' => $timeduration));
