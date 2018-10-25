@@ -31,11 +31,6 @@
  * Main file
  */
 
-require_once('config.php');
-require_once($CFG->dirroot .'/course/lib.php');
-require_once($CFG->libdir .'/filelib.php');
-require_once($CFG->libdir .'/accesslib.php');
-
 namespace local_calendarevents\task;
 
 defined('MOODLE_INTERNAL') || die();
@@ -50,6 +45,10 @@ class managecalendarevents extends \core\task\scheduled_task {
     public function execute() {
 
         global $DB, $CFG;
+
+        require_once($CFG->dirroot .'/course/lib.php');
+        require_once($CFG->libdir .'/filelib.php');
+        require_once($CFG->libdir .'/accesslib.php');
 
         $now = time();
 
