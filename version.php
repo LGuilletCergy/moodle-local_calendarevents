@@ -33,6 +33,6 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version = 2018102500;
+$plugin->version = 2018102501;
 $plugin->requires = 2015051100;
 $plugin->component = 'local_calendarevents';
